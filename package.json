@@ -1,0 +1,19 @@
+{
+  "name": "linked-lists",
+  "version": "1.0.0",
+  "description": "Linked Lists project on The Odin Project's curriculum.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/climaxmba/linked-lists.git"
+  },
+  "author": "Climax Mba",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/climaxmba/linked-lists/issues"
+  },
+  "homepage": "https://github.com/climaxmba/linked-lists#readme"
+}
