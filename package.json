@@ -4,7 +4,7 @@
   "description": "Linked Lists project on The Odin Project's curriculum.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "watch": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/climaxmba/linked-lists/issues"
   },
-  "homepage": "https://github.com/climaxmba/linked-lists#readme"
+  "homepage": "https://github.com/climaxmba/linked-lists#readme",
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
 }
