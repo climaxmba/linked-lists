@@ -7,17 +7,20 @@ class Node {
 
 class LinkedList {
   constructor() {
-    this.head = new Node("head");
+    this.head = new Node("HEAD");
     this.size = 1;
   }
 
   get tail() {
-    return this.getLast().nextNode;
+    return this.getLast();
   }
 
   append(node) {
-    node.nextNode = null;
-    this.getLast().nextNode = node;
+    if (!this.head) {
+      this.head = node;
+    } else {
+      this.getLast().nextNode = node;
+    }
     this.size++;
   }
 
@@ -39,18 +42,37 @@ class LinkedList {
   }
 
   pop() {
-    this.getLast().nextNode = null;
-    this.size--;
+    // Do nothing if this.size is 0
+    if (this.size === 0) return;
+
+    let node = this.head;
+    while (true) {
+      if (this.size === 1) {
+        this.head = null;
+        this.size--;
+        return;
+      } else if (this.size === 2) {
+        this.head.nextNode = null;
+        this.size--
+        return;
+      } else if (node.nextNode.nextNode === null) {
+        node.nextNode = null;
+        this.size--;
+        return;
+      }
+      node = node.nextNode
+    }
   }
 
   contains(value) {
     let node = this.head,
       index = 0;
-    while (node.nextNode !== null) {
-      if (node.value === value) return index;
+    while (node !== null) {
+      if (node.value === value) return true;
+      node = node.nextNode;
       index++;
     }
-    return null;
+    return false;
   }
 
   toString() {
@@ -68,12 +90,12 @@ class LinkedList {
 
   // Helper function(s)
   getLast(node = this.head) {
-    // error
-    if (node.nextNode.nextNode === null) return node;
-    return this.getLast(list.nextNode);
+    if (this.size <= 1) return this.head;
+    if (node.nextNode.nextNode === null) return node.nextNode;
+    return this.getLast(node.nextNode);
   }
 }
 
 const list = new LinkedList();
-list.append(new Node("flower"))
-console.log(list.toString());
+list.append(new Node("Girl"));
+console.log(list.tail);
