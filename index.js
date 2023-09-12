@@ -15,19 +15,23 @@ class LinkedList {
     return this.getLast();
   }
 
-  append(node) {
-    if (!this.head) {
-      this.head = node;
-    } else {
-      this.getLast().nextNode = node;
-    }
-    this.size++;
+  append(...nodes) {
+    nodes.forEach((node) => {
+      if (!this.head) {
+        this.head = node;
+      } else {
+        this.getLast().nextNode = node;
+      }
+      this.size++;
+    });
   }
 
-  prepend(node) {
-    node.nextNode = this.head;
-    this.head = node;
-    this.size++;
+  prepend(...nodes) {
+    nodes.forEach((node) => {
+      node.nextNode = this.head;
+      this.head = node;
+      this.size++;
+    });
   }
 
   at(index) {
@@ -53,14 +57,14 @@ class LinkedList {
         return;
       } else if (this.size === 2) {
         this.head.nextNode = null;
-        this.size--
+        this.size--;
         return;
       } else if (node.nextNode.nextNode === null) {
         node.nextNode = null;
         this.size--;
         return;
       }
-      node = node.nextNode
+      node = node.nextNode;
     }
   }
 
@@ -108,5 +112,5 @@ class LinkedList {
 }
 
 const list = new LinkedList();
-list.append(new Node("Girl"));
-console.log(list.find("HEAD"));
+list.prepend(new Node("Girl"));
+console.log(list.toString());
