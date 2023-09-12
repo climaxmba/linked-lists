@@ -104,6 +104,39 @@ class LinkedList {
       node = node.nextNode;
     }
   }
+  
+  insertAt(value, index) {
+    if (index > this.size || index < 0) return;
+    if (index === 0) return this.prepend(value);
+
+    let node = this.head;
+    for (let i = 0; true; i++) {
+      if (i + 1 === index) {
+        node.nextNode = new Node(value, node.nextNode);
+        this.size++;
+        return;
+      }
+      node = node.nextNode;
+    }
+  }
+
+  removeAt(index) {
+    if (index >= this.size || index < 0) return;
+    if (index === 0) {
+      this.head = this.head.nextNode;
+      return;
+    }
+
+    let node = this.head;
+    for (let i = 0; true; i++) {
+      if (i + 1 === index) {
+        node.nextNode = node.nextNode.nextNode;
+        this.size--;
+        return;
+      }
+      node = node.nextNode;
+    }
+  }
 
   // Helper function(s)
   getLast(node = this.head) {
@@ -112,7 +145,3 @@ class LinkedList {
     return this.getLast(node.nextNode);
   }
 }
-
-const list = new LinkedList();
-list.append("red", "green", new Node("blue"));
-console.log(list.toString(), list.size);
