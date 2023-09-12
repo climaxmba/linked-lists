@@ -75,6 +75,17 @@ class LinkedList {
     return false;
   }
 
+  find(value) {
+    let node = this.head,
+      index = 0;
+    while (node !== null) {
+      if (node.value === value) return index;
+      node = node.nextNode;
+      index++;
+    }
+    return null;
+  }
+
   toString() {
     let string = "",
       node = this.head;
@@ -98,4 +109,4 @@ class LinkedList {
 
 const list = new LinkedList();
 list.append(new Node("Girl"));
-console.log(list.tail);
+console.log(list.find("HEAD"));
