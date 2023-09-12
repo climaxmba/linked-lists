@@ -15,21 +15,23 @@ class LinkedList {
     return this.getLast();
   }
 
-  append(...nodes) {
-    nodes.forEach((node) => {
+  append(...values) {
+    values.forEach((value) => {
+      if (!(value instanceof Node)) value = new Node(value);
       if (!this.head) {
-        this.head = node;
+        this.head = value;
       } else {
-        this.getLast().nextNode = node;
+        this.getLast().nextNode = value;
       }
       this.size++;
     });
   }
 
-  prepend(...nodes) {
-    nodes.forEach((node) => {
-      node.nextNode = this.head;
-      this.head = node;
+  prepend(...values) {
+    values.forEach((value) => {
+      if (!(value instanceof Node)) value = new Node(value);
+      value.nextNode = this.head;
+      this.head = value;
       this.size++;
     });
   }
@@ -112,5 +114,5 @@ class LinkedList {
 }
 
 const list = new LinkedList();
-list.prepend(new Node("Girl"));
-console.log(list.toString());
+list.append("red", "green", new Node("blue"));
+console.log(list.toString(), list.size);
